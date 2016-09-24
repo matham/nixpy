@@ -81,7 +81,8 @@ def get_wheel_data():
     bin = os.environ.get('NIXPY_WHEEL_BINARIES', '')
     if bin and os.path.isdir(bin):
         data.append(
-            ('share/nixio/bin', [join(bin, f) for f in listdir(bin)]))
+            ('share/nixio/bin',
+             [os.path.join(bin, f) for f in os.listdir(bin)]))
     return data
 
 is_win = os.name == 'nt'
