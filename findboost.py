@@ -126,6 +126,7 @@ class BoostPyLib(object):
             ('libboost_python.lib', (None, None, False)),
             ('libboost_python-mt.dylib', (None, None, True)),
             ('libboost_python-vc120-mt-1_57.lib', (None, None, True)),
+            ('libboost_python-vc120-mt-1_61.lib', (None, None, True)),
             ('/usr/lib/libboost_python.a', None)]
 
         try:
