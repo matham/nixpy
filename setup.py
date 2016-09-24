@@ -76,6 +76,14 @@ def pkg_config(*packages, **kw):
 
     return kw
 
+def get_wheel_data():
+    data = []
+    bin = os.environ.get('NIXPY_WHEEL_BINARIES', '')
+    if bin and os.path.isdir(bin):
+        data.append(
+            ('share/nixio/bin', [join(bin, f) for f in listdir(bin)]))
+    return data
+
 is_win = os.name == 'nt'
 
 nix_inc_dir = os.getenv('NIX_INCDIR', '/usr/local/include')
@@ -177,5 +185,6 @@ setup(name             = 'nixio',
       package_data     = {'nixio': [license_text, description_text]},
       include_package_data = True,
       zip_safe         = False,
+      data_files=get_wheel_data()
 )
 
