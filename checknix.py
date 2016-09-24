@@ -43,7 +43,8 @@ def check_nix(library_dirs=(), include_dirs=(), compile_args=()):
     os.dup2(errfile.fileno(), sys.stderr.fileno())
     try:
         compiler.compile([file_name], output_dir=tmpdir,
-                         extra_postargs=compile_args)
+                         extra_postargs=compile_args,
+                         include_dirs=compiler.include_dirs)
     except (CompileError, LinkError):
         ret_val = False
     else:
