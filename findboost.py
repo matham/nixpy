@@ -32,6 +32,14 @@ class BoostPyLib(object):
         return self.major == major and self.minor == minor and (ignore_threading or self.threadsafe == threadsafe)
 
     @property
+    def library_name(self):
+        name, ext = os.path.splitext(self.filename)
+        if ext == 'lib':
+            return self.filename
+        else:
+            return name[3:]
+
+    @property
     def link_directive(self):
         name, ext = os.path.splitext(self.filename)
         if ext == 'lib':
