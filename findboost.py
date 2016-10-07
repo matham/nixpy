@@ -35,7 +35,7 @@ class BoostPyLib(object):
     def library_name(self):
         name, ext = os.path.splitext(self.filename)
         if ext == 'lib':
-            return self.filename
+            return 'lib' + self.filename
         else:
             return name[3:]
 
