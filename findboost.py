@@ -34,10 +34,7 @@ class BoostPyLib(object):
     @property
     def library_name(self):
         name, ext = os.path.splitext(self.filename)
-        if ext.endswith('lib'):
-            return self.filename
-        else:
-            return name[3:]
+        return name if ext.endswith('lib') else name[3:]
 
     @property
     def link_directive(self):
