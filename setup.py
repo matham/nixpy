@@ -149,7 +149,7 @@ if with_nix:
     libraries.append(boost_lib.library_name)
     extra_link_args = []
     if is_win:
-        extra_link_args = ['/DEFAULTLIB:{}'.format(f) for f in libraries]
+        extra_link_args = ['/DEFAULTLIB:{}.lib'.format(f) for f in libraries]
         libraries = []
 
     native_ext = Extension(
