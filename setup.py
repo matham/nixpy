@@ -147,15 +147,10 @@ if with_nix:
         sys.exit(-1)
 
     libraries.append(boost_lib.library_name)
-    extra_link_args = []
-    if is_win:
-        extra_link_args = ['/DEFAULTLIB:{}.lib'.format(f) for f in libraries]
-        libraries = []
 
     native_ext = Extension(
         'nixio.core',
         extra_compile_args=['-std=c++11'] if not is_win else ['/DBOOST_PYTHON_STATIC_LIB', '/EHsc'],
-        extra_link_args=extra_link_args,
         libraries=libraries,
         sources=nixpy_sources,
         runtime_library_dirs=library_dirs if not is_win else None,
